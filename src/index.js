@@ -20,7 +20,34 @@ let order = (time, work) => {
     }
   });
 };
-order(2000, () => console.log(`${stocks.Fruits[0]}  was selected`));
+order(2000, () => console.log(`${stocks.Fruits[0]} was selected`))
+  .then(() => {
+    return order(0, () => console.log("production has started"));
+  })
+  .then(() => {
+    return order(2000, () => console.log("Fruits has been chopped"));
+  })
+  .then(() => {
+    return order(1000, () =>
+      console.log(
+        `${stocks.liquid[0]} was selected and ${stocks.liquid[1]} added`
+      )
+    );
+  })
+  .then(() => {
+    return order(1000, () => console.log("start the machine"));
+  })
+  .then(() => {
+    return order(2000, () =>
+      console.log(`ice crean placed on ${stocks.holder[1]}`)
+    );
+  })
+  .then(() => {
+    return order(3000, () => console.log(`${stocks.toppings[0]} as toppings`));
+  })
+  .then(() => {
+    return order(2000, () => console.log("serve ice cream"));
+  });
 
 document.getElementById("app").innerHTML = `
 
